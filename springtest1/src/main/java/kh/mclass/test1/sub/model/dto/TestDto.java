@@ -1,7 +1,5 @@
 package kh.mclass.test1.sub.model.dto;
 
-import org.springframework.stereotype.Component;
-
 
 //@Component("testDto")
 public class TestDto {

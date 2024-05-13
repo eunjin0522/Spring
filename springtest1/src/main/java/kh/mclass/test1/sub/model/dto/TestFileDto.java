@@ -1,11 +1,10 @@
 package kh.mclass.test1.sub.model.dto;
 
-import org.springframework.stereotype.Component;
-
 //@Component("testFileDto")
 public class TestFileDto {
 	private String filePath;
 	private String fileType;
+	
 	@Override
 	public String toString() {
 		return "TestFileDto [filePath=" + filePath + ", fileType=" + fileType + "]";
@@ -31,6 +30,4 @@ public class TestFileDto {
 	public void setFileType(String fileType) {
 		this.fileType = fileType;
 	}
-	
-	
 }

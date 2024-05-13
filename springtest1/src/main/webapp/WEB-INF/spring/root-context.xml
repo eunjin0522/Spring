@@ -4,15 +4,30 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	<!-- namespace 에서 context체크  classpath: 소스폴더를 의미-->
-	<context:property-placeholder location="classpath:keyproperties/*"/>
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<!-- DB연동 -->
-	<bean class="org.apache.commons.dbcp2.BasicDataSource" id="dataSource">
+	<!-- namespace 에서 context체크  classpath: 소스폴더를 의미-->
+	<!-- propeties를 모아둔 폴더 전체를 location으로 지정 -->
+	<context:property-placeholder location="classpath:keyproperties/*"/>
+	
+	<!-- DB연동 관련 Bean들 -->
+	<!-- DBCP -->
+	<bean class="org.apache.commons.dbcp2.BasicDataSource" id="dataSource" destroy-method="close">
 		<property name="driverClassName" value="${db.driverClassName}"></property>
 		<property name="url" value="${db.url}"></property>
 		<property name="username" value="${db.userName}"></property>
 		<property name="password" value="${db.password}"></property>
+	</bean>
+	<!-- mybatis -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- file의 위치를 잡아주는 것 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+	
+	<!-- 기본생성자가 없으면 에러 발생 -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+	<!-- sqlSessionFactoryBean을 생성되어야 이 템플릿이 작동될 수 있다 단순 text가 아니므로 ref로 받는다 -->
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 </beans>

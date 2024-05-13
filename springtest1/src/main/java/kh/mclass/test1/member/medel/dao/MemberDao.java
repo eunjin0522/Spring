@@ -18,4 +18,16 @@ public class MemberDao {
 	public List<MemberRes> selectList(){
 		return sqlSession.selectList("Member.list");//Member : mapper의 namespace
 	}
+	public MemberRes selectOne(String memId){
+		System.out.println("selectOne : "+memId);
+		return sqlSession.selectOne("Member.one",memId);//Member : mapper의 namespace
+	}
+	public int insert() {
+		//sqlSession.insert("Member.insert");
+		return 0;
+	}
+	public int update() {
+		//sqlSession.update("Member.update");
+		return 0;
+	}
 }

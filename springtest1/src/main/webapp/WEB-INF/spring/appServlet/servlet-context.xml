@@ -3,13 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- annotion을 인지하고 설정해주는 코드 -->
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
@@ -20,40 +25,19 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	<!-- beans는 prefix로 붙는다 -->
-	<!-- 어노테이션을 붙이지 않아도 지정한 class를 service파일로 쓸 수 있다 / 특별한 파일의 경우 여기에 저장-->
-	<!-- <beans:bean id="testService" class="kh.mclass.test1.sub.TestService"> -->
+
 	<beans:bean id="testDto" class="kh.mclass.test1.sub.model.dto.TestDto"> 
-	<!-- 1. Setter 메소드를 통한 의존성 주입 -->
-	<!-- <beans:property name="t1" value="생성값1"></beans:property>
-		<beans:property name="t2" value="생성값2"></beans:property> -->
-	<!-- 2. 생성자를 통한 의존성 주입 -->	
-	<!-- 2-1 -->
-	<!-- <beans:constructor-arg index="0" value="생성자로 넣는 값1"></beans:constructor-arg>
-		<beans:constructor-arg index="1" value="생성자가 두 개의 파라미터를 요하므로 2개를 넣어준다"></beans:constructor-arg> -->
-	<!-- 2-2 -->
-	<!-- <beans:constructor-arg name="t2" value="index대신 필드명으로 해도 된다 name은 필드명과 맞춘다"></beans:constructor-arg>
-		<beans:constructor-arg name="t1" value="코드 순서가 파라미터 순서와 달라도 알아서 name에 맞춰 넣어준다"></beans:constructor-arg> -->
-	<!-- 2-3 -->
+
 		<beans:constructor-arg name="t2" value="생성자로 값넣기"></beans:constructor-arg>
 		<beans:property name="t1" value="setter로 값 넣기"></beans:property>
 		<beans:property name="testFileDto" ref="testFileDto"></beans:property>
 	</beans:bean>
+	
 	<beans:bean id="testFileDto" class="kh.mclass.test1.sub.model.dto.TestFileDto">
 		<beans:constructor-arg name="filePath" value="aaa.jsp"></beans:constructor-arg>
 		<beans:constructor-arg name="fileType" value="jsp"></beans:constructor-arg>
 	</beans:bean>
-	<!-- 
-	<beans:bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<beans:property name="mappings">
-			<beans:props>
-				<beans:prop key="/aaa">testController</beans:prop> key있는 곳으로 가게 해달라??? 
-				<beans:prop key="/bbb">값2</beans:prop>
-			</beans:props>
-		</beans:property>
-	</beans:bean>
-	 -->
 	<context:component-scan base-package="kh.mclass.test1" />
 	</beans:beans>
-	
-	
+
+

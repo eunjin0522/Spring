@@ -14,6 +14,11 @@ public class MemberRes {
 	public MemberRes() {
 		super();
 	}
+	
+	@Override
+	public String toString() {
+		return "MemberRes [memId=" + memId + ", memPwd=" + memPwd + ", memEmail=" + memEmail + "]";
+	}
 	public String getMemId() {
 		return memId;
 	}

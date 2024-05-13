@@ -2,7 +2,22 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<!-- 어노테이션을 설정해 두면 해달xml작동 안 함 -->
+	<bean id="testDto" class="kh.mclass.test1.sub.model.dto.TestDto" init-method="init" >
+	<!--init-method :init메소드를 초기에 실행해달라 
+		destroy-method : 해당 bean객체의 스코프가 끝날 경우 close 메소드 호출-->
+
+		<constructor-arg name="t2" value="생성자로 값넣기"></constructor-arg>
+		<property name="t1" value="setter로 값 넣기"></property>
+		<property name="testFileDto" ref="testFileDto"></property>
+	</bean>
+	<bean id="testFileDto"
+		class="kh.mclass.test1.sub.model.dto.TestFileDto">
+		<constructor-arg name="filePath" value="aaa!!.jsp"></constructor-arg>
+		<constructor-arg name="fileType" value="jsp!!"></constructor-arg>
+	</bean>
+	<!-- Namespaces에서 MVC를 체크하고 오면 아래의 태그가 뜬다 -->
+	<!-- <mvc:annotation-driven></mvc:annotation-driven> -->
 </beans>

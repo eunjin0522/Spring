@@ -40,6 +40,20 @@
 	<!-- 방법1 @Aspect AOP annotation 인식 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<!-- 방법2 @Aspect AOP annotation 인식 사용 안 함 -->
+	
+	<beans:bean class="kh.mclass.test1.common.LoginInterceptor" id="loginInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<!-- 제외할 것들 설정 -->
+			<exclude-mapping path="/login"/>
+			<exclude-mapping path="/join"/>
+			<exclude-mapping path="/main"/>
+			<!-- resources파일엔 이미지 jsp 등 정적 서비스를 제공하는 파일들이 있다. 반드시 설정해줘야한다! -->
+			<exclude-mapping path="/resources/**"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>
 
 

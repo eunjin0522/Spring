@@ -31,6 +31,9 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+	<logger name="org.springframework.jndi">
+		<level value="info" />
+	</logger>
 
 	<!-- JDBC -->
 	<logger name="jdbc.sqlonly" additivity="false">
@@ -54,7 +57,7 @@
 	
 	<!-- Root Logger -->
 	<root>
-		<priority value="trace" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 	

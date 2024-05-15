@@ -22,6 +22,11 @@ public class MemberService {
 		//memberDao.update(); //update는 0이어도 오류가 아니다. 0행이 업데이트 될 수도 있음
 		return memberDao.selectList();
 	}
+	public MemberRes selectOne(String memId){
+		//memberDao.insert(); 
+		//memberDao.update(); //update는 0이어도 오류가 아니다. 0행이 업데이트 될 수도 있음
+		return memberDao.selectOne( memId);
+	}
 	public void insertAbc() {
 		
 	}

@@ -1,41 +1,17 @@
 package kh.mclass.test1.member.medel.dto;
 
+import lombok.Data;
 
+//@Setter //setter만 생성
+//@Getter //getter만 생성
+
+@Data //getter,setter생성
+//@ToString //tostring
+//@AllArgsConstructor //생성자생성
+//@NoArgsConstructor //기본생성자
 public class MemberRes {
 	private String memId;
 	private String memPwd;
 	private String memEmail;
-	public MemberRes(String memId, String memPwd, String memEmail) {
-		super();
-		this.memId = memId;
-		this.memPwd = memPwd;
-		this.memEmail = memEmail;
-	}
-	public MemberRes() {
-		super();
-	}
-	
-	@Override
-	public String toString() {
-		return "MemberRes [memId=" + memId + ", memPwd=" + memPwd + ", memEmail=" + memEmail + "]";
-	}
-	public String getMemId() {
-		return memId;
-	}
-	public void setMemId(String memId) {
-		this.memId = memId;
-	}
-	public String getMemPwd() {
-		return memPwd;
-	}
-	public void setMemPwd(String memPwd) {
-		this.memPwd = memPwd;
-	}
-	public String getMemEmail() {
-		return memEmail;
-	}
-	public void setMemEmail(String memEmail) {
-		this.memEmail = memEmail;
-	}
 	
 }

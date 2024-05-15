@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kh.mclass.test1.sub.model.dto.TestDto;
@@ -19,7 +21,17 @@ public class TestController {
 	@Autowired
 	private TestService testservice;
 	
-	@GetMapping("/test1")
+	
+	
+	  @GetMapping("/login") 
+	  public String login( Model model ) {
+		  
+	  return "home";
+	  }
+	 
+	 
+	
+	@GetMapping(path="/test1")
 	public String method1(
 			@RequestParam(defaultValue = "default값이예요", required = false, name="a") String bbb, 
 			HttpServletRequest request,
